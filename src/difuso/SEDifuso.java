@@ -58,7 +58,7 @@ public class SEDifuso implements SistemaExperto {
 	}
 
 	@Override
-	public void datosEntrada() {
+	public void datosEntrada(List<String> lista) {
 		// Se ha integrado en el motor de inferencia para proporcionar
 		//  un rango de valores combinando las dos variables de entrada
 		
@@ -175,10 +175,10 @@ public class SEDifuso implements SistemaExperto {
 	}
 
 	@Override
-	public void mostrarResultado() {
+	public String mostrarResultado() {
 		
-		guardarDatos();
-		
+		//guardarDatos();
+		return "";
 
 	}
 	

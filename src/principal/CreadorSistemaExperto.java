@@ -1,5 +1,7 @@
 package principal;
 
+import java.util.List;
+
 /**
  * Aplicación creadora de sistemas expertos nítidos o difusos
  * con base de conocimiento de ejemplo.
@@ -21,9 +23,9 @@ public abstract class CreadorSistemaExperto {
 		sistema = crearSistemaExperto();
 		sistema.crearVariables();
 		}
-
-	public void datosEntrada() {		
-		sistema.datosEntrada();
+	
+	public void datosEntrada(List<String> listaHechosIniciales) {		
+		sistema.datosEntrada(listaHechosIniciales);
 		}
 	public void anadirReglas() {		
 		sistema.anadirReglas();
@@ -31,9 +33,10 @@ public abstract class CreadorSistemaExperto {
 	public void ejecutarMotor() {		
 		sistema.ejecutarMotor();
 		}
-	public void mostrarResultado() {		
-		sistema.mostrarResultado();
+	public String mostrarResultado() {		
+		return sistema.mostrarResultado();
 		}
+	
 	
 	
 }

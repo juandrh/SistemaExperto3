@@ -1,5 +1,7 @@
 package principal;
 
+import java.util.List;
+
 /**
  * Aplicación creadora de sistemas expertos nítidos o difusos
  * con base de conocimiento de ejemplo.
@@ -15,9 +17,9 @@ package principal;
 public interface SistemaExperto {
 	
 	public abstract void crearVariables();
-	public abstract void datosEntrada();  // Base de conocimiento: Inputs, Hechos 
+	public abstract void datosEntrada(List<String> lista);  // Base de conocimiento: Inputs, Hechos 
 	public abstract void anadirReglas();  // Base de conocimiento: Reglas
 	public abstract void ejecutarMotor();  // Motor inferencia
-	public abstract void mostrarResultado(); // Acción a realizar
+	public abstract String mostrarResultado(); // Acción a realizar
 
 }

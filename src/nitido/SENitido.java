@@ -20,10 +20,12 @@ import principal.SistemaExperto;
 public class SENitido implements SistemaExperto {
 
 	List<Expresion> hechos;
+	List<String> hechosIniciales;
 	List<Regla> reglas;
 	List<Regla> conflictos;
 	List<Expresion> resultados = new ArrayList<Expresion>();
-	Expresion P, CN, TD, AD, CM, EP, DL, DC, PP, RL, RC, RD, ET, CB, ER, PA, resultado;
+	Expresion P, CN, TD, AD, CM, EP, DL, DC, PP, RL, RC, RD, ET, CB, ER, PA,resultado;
+	String textoAMostrar;
 
 	@Override
 	public void crearVariables() {
@@ -32,6 +34,7 @@ public class SENitido implements SistemaExperto {
 		conflictos = new ArrayList<Regla>();
 		resultados = new ArrayList<Expresion>();
 		resultado = null;
+		textoAMostrar ="";
 
 		// Crear hechos con los estados posibles
 		P = new Hecho("Pedido recibido");
@@ -54,13 +57,40 @@ public class SENitido implements SistemaExperto {
 	}
 
 	@Override
-	public void datosEntrada() {
+	public void datosEntrada(List<String> lista) {
 		// Añadir hechos a la base de conocmimientos
-		hechos.add(P);
-		hechos.add(CN);
-		//hechos.add(AD);
-		hechos.add(RL);
-		hechos.add(RC);
+		
+		
+		
+		for(int i=0;i<lista.size();i++) {
+			switch (lista.get(i)) { 
+			    case "Pedido recibido":
+			    hechos.add(P);
+			     break;
+			    case "Cliente nuevo":
+			    	hechos.add(CN);
+			     break;
+			    
+			    case "Artículo disponible":
+			    	hechos.add(AD);
+			     break;
+			    case "Cliente moroso":
+			    	hechos.add(CM);
+				     break;
+			    case "Robot libre":
+			    	hechos.add(RL);
+				     break;
+			    case "Robot cargado":
+			    	hechos.add(RC);
+				     break;
+			    default:
+			     // Default 
+		  }			
+		}
+		
+		
+		
+		
 		// fijar objetivos (acciones posibles a realizar)
 		resultados.add(ET);
 		resultados.add(CB);
@@ -68,9 +98,9 @@ public class SENitido implements SistemaExperto {
 		resultados.add(PA);
 
 		// Muestra hechos iniciales
-		System.out.println("Hechos inciales: \n");
+		textoAMostrar += "\n" + "Hechos inciales: \n";
 		for (int i = 0; i < hechos.size(); i++) {
-			System.out.println(hechos.get(i).toString());
+			textoAMostrar += "\n" + hechos.get(i).toString();
 		}
 
 	}
@@ -141,9 +171,9 @@ public class SENitido implements SistemaExperto {
 		Regla R10 = new Regla(O12, PA, hechos);
 		reglas.add(R10);
 
-		System.out.println("\nReglas: \n");
+		textoAMostrar +="\nReglas: \n";
 		for (int i = 0; i < reglas.size(); i++) {
-			System.out.println(reglas.get(i).toString());
+			textoAMostrar += "\n" + reglas.get(i).toString();
 		}
 
 	}
@@ -163,14 +193,14 @@ public class SENitido implements SistemaExperto {
 					}
 				}
 			}
-			System.out.println("\n-- Ronda " + ronda + " ----\n");
-			System.out.println("\nConflictos:");
+			textoAMostrar += "\n" + "\n-- Ronda " + ronda + " ----\n";
+			textoAMostrar += "\n" + "\nConflictos:";
 			for (int i = 0; i < conflictos.size(); i++) {
-				System.out.println(conflictos.get(i).toString());
+				textoAMostrar += "\n" + conflictos.get(i).toString();
 			}
 			System.out.println("\nHechos:");
 			for (int i = 0; i < hechos.size(); i++) {
-				System.out.println(hechos.get(i).toString() + "(" + hechos.get(i).evaluar(hechos) + ")");
+				textoAMostrar += "\n" + hechos.get(i).toString() + "(" + hechos.get(i).evaluar(hechos) + ")";
 			}
 
 			// Resolución de conflictos: elegir la primera regla que aporte conocimiento
@@ -180,8 +210,8 @@ public class SENitido implements SistemaExperto {
 
 				if (!hechos.contains(conflicto.getConsecuente())) {
 					// Fase de ejecución: añadir el consecuente a la base de conocimiento
-					System.out.println("\nRegla aplicada: " + conflicto.toString());
-					System.out.println("Añadido a base de conocimiento: " + conflicto.getConsecuente().toString());
+					textoAMostrar += "\n" + "\nRegla aplicada: " + conflicto.toString();
+					textoAMostrar += "\n" + "Añadido a base de conocimiento: " + conflicto.getConsecuente().toString();
 					conflicto.aplicarRegla();
 					reglas.remove(conflicto);
 					if (resultados.contains(conflicto.getConsecuente())) {
@@ -199,14 +229,20 @@ public class SENitido implements SistemaExperto {
 	}
 
 	@Override
-	public void mostrarResultado() {
+	public String mostrarResultado() {
 		if (resultado == null) {
-			System.out.println("No se ha obtenido resultado.\nRevisar las datos de entrada y las reglas.");
+			textoAMostrar += "\n\n" + "No se ha obtenido resultado.\nRevisar las datos de entrada y las reglas.";
 
 		} else {
-			System.out.println("Resultado: " + resultado);
+			textoAMostrar += "\n\n" + "Resultado: " + resultado.getDescripcion();
 		}
+		
+		
+		return textoAMostrar;
 
 	}
+	
+	
+		
 
 }
