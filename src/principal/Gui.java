@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.Graphics;
 import java.awt.GridLayout;
 import java.awt.Toolkit;
@@ -23,8 +24,10 @@ import javax.swing.JList;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.JSlider;
 import javax.swing.JTextArea;
 import javax.swing.JToolBar;
 import javax.swing.ListSelectionModel;
@@ -34,6 +37,7 @@ import javax.swing.text.DefaultCaret;
 
 import nitido.Expresion;
 import nitido.Hecho;
+
 
 
 
@@ -87,8 +91,9 @@ public class Gui extends JFrame implements ListSelectionListener{  //implements 
 	private JList<String> Jlista;
 	private List<String> listaHechosIniciales;
 		
-	private JLabel etiqueta2,etiqueta3 ;
+	private JLabel label1 ,label2,label3 ;
 	private CreadorSistemaExperto creador;
+	private JSlider slider1,slider2,slider3,slider4,slider5,slider6;
 
 
 	public Gui() {
@@ -106,7 +111,7 @@ public class Gui extends JFrame implements ListSelectionListener{  //implements 
 		
 		
 		
-		creador = new CreadorSistemaExpertoNitido(); 
+		
 		//creador = new CreadorSistemaExpertoDifuso();
 			
 		
@@ -123,35 +128,23 @@ public class Gui extends JFrame implements ListSelectionListener{  //implements 
 		// Menu
 		menuBar = new JMenuBar();
 		menu1 = new JMenu("Archivo");
-		menuNuevo = new JMenuItem("Nuevo metaverso");
+		menuNuevo = new JMenuItem("Nuevo sistema experto");
 		menuSalir = new JMenuItem("Salir");
 		menuBar.add(menu1);
 		menu1.add(menuNuevo);
-		menu1.add(menuSalir);
-		menu2 = new JMenu("Notificaciones");
-		menuNotificaciones = new JMenuItem("Mostrar / ocultar Notificaciones");
-		menu2.add(menuNotificaciones);	
-		menuBar.add(menu2);
+		menu1.add(menuSalir);		
 		menuAcercaDe = new JMenuItem("Acerca de");
 		menu3 = new JMenu("Acerca de");
 		menu3.add(menuAcercaDe);
 		menuBar.add(menu3);
 		this.setJMenuBar(menuBar);
-		String hechos[]={		
-			"Pedido recibido",
-			"Cliente nuevo",			
-			"Artículo disponible",
-			"Cliente moroso",			
-			"Robot libre",
-			"Robot cargado"		
-		};
 		
 		
 		
 		
 		
-		Jlista = new JList<String>(hechos);
-		listaHechosIniciales = new ArrayList<String>();
+		
+		
 		
 
 		// Barra de herramientas
@@ -174,9 +167,6 @@ public class Gui extends JFrame implements ListSelectionListener{  //implements 
 		panelCentral = new JPanel();		
 		panelCentral.setLayout(new BorderLayout());
 		panelScrollSalida = new JScrollPane();
-		Jlista.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
-		Jlista.setBounds(50,100,250,350);
-		Jlista.setPreferredSize(new Dimension(400, 875));
 		
 		cajaTextoCentral = new JTextArea(42, 24);
 		cajaTextoCentral.setEditable(false);
@@ -189,20 +179,20 @@ public class Gui extends JFrame implements ListSelectionListener{  //implements 
 		panelCentral.add(panelScrollSalida);
 		
 		panelAux = new JPanel();
-		panelAux.setLayout(new BorderLayout());
-		panelAux.add(Jlista,BorderLayout.CENTER );
-		//panelMapa.setBackground(new Color(100, 50, 50));
+		panelAux.setLayout(new FlowLayout());
+		panelAux.setPreferredSize(new Dimension(250, 875));
+		panelAux.setBackground(Color.WHITE);
+		
 
 		getContentPane().add(toolBar, BorderLayout.NORTH);
-		getContentPane().add(panelAux, BorderLayout.WEST);
+		 getContentPane().add(panelAux, BorderLayout.WEST);
 		getContentPane().add(panelCentral, BorderLayout.CENTER);
 		
 		panelScrollSalida.setFocusable(false);
 		cajaTextoCentral.setFocusable(false);
 		
 		
-		//Add ListSelectionListener to list
-	      Jlista.addListSelectionListener(this);
+		
 		// Propiedades generales del GUI
 		setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
 		setPreferredSize(new Dimension(1335, 875));
@@ -228,7 +218,173 @@ public class Gui extends JFrame implements ListSelectionListener{  //implements 
 	/*
 	 * FUNCIONES CICLO ANIMACION
 	 */
+	public void crearNuevo() {
+		
+	
+	String[] options = {"Nítido", "Difuso", "Cancelar"};
+    int x = JOptionPane.showOptionDialog(null, "Elije el sistema experto",
+            "Crear nuevo sistema", JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE, iconNuevo, options, options[0]);
+    
+    
+    // Limpieza de panel auxiliar
+    try {
+		panelAux.remove(Jlista);
+		
+	} catch (Exception e) {			
+	}
+	try {
+		panelAux.remove(slider1);
+	} catch (Exception e) {			
+	}
+	try {
+		panelAux.remove(slider2);
+	} catch (Exception e) {			
+	}
+	try {
+		panelAux.remove(slider3);
+	} catch (Exception e) {			
+	}
+	
+	try {
+		panelAux.remove(slider4);
+	} catch (Exception e) {			
+	}
+	try {
+		panelAux.remove(slider5);
+	} catch (Exception e) {			
+	}
+	try {
+		panelAux.remove(slider6);
+	} catch (Exception e) {			
+	}
+	try {
+		panelAux.remove(label1);
+	} catch (Exception e) {			
+	}
+	try {
+		panelAux.remove(label2);
+	} catch (Exception e) {			
+	}
+	try {
+		panelAux.remove(label3);
+	} catch (Exception e) {			
+	}
+    
+    
+    if (x == 0) {
+    	
+    	inicializarEntornoNitido();    	
+    	
+    } else if (x == 1) {
+    	
+    	try {
+			panelAux.remove(Jlista);
+			this.pack();
+    	} catch (Exception e) {			
+		}
+    	inicializarEntornoDifuso(); 
+    } 
+    this.pack();
+	}
+	
+	private void inicializarEntornoNitido() {
+		
+		
+		creador = new CreadorSistemaExpertoNitido(); 
+		
+		String hechos[]={		
+				"Pedido recibido",
+				"Cliente nuevo",			
+				"Artículo disponible",
+				"Cliente moroso",			
+				"Robot libre",
+				"Robot cargado"		
+			};
+		Jlista = new JList<String>(hechos);
+		listaHechosIniciales = new ArrayList<String>();
+		
+		Jlista.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
+		Jlista.setBounds(50,100,250,350);
+		Jlista.setPreferredSize(new Dimension(250, 875));
+		
+		panelAux.add(Jlista);
+		cajaTextoCentral.setText("");
+		
+		//Add ListSelectionListener to list
+	      Jlista.addListSelectionListener(this);
+	     this.pack();
+	     
+		
+	}
+	
+	private void inicializarEntornoDifuso() {
+		
+		
+		creador = new CreadorSistemaExpertoDifuso(); 
+		
+		
+		slider1 = new JSlider(JSlider.HORIZONTAL, -100, 100, -100);
+		slider2 = new JSlider(JSlider.HORIZONTAL, -100, 100, 100);
+		slider3 = new JSlider(JSlider.HORIZONTAL, -100, 100, -100);		
+		slider4 = new JSlider(JSlider.HORIZONTAL, -100, 100, 100);
+		slider5 = new JSlider(JSlider.HORIZONTAL, -100, 100, -100);
+		slider6 = new JSlider(JSlider.HORIZONTAL, -100, 100, 100);
+		
+		label1 = new JLabel("Parámetros Velocidad Media");
+		label2 =  new JLabel("Parámetros Nivel de Bateria");
+		label3 =  new JLabel("Parámetros Potencia a aplicar");
 
+		panelAux.add(label1 );
+		panelAux.add(slider1 );
+		panelAux.add(slider2 );
+		panelAux.add(label2 );
+		panelAux.add(slider3 );
+		panelAux.add(slider4);
+		panelAux.add(label3 );
+		panelAux.add(slider5 );
+		panelAux.add(slider6 );
+		
+		cajaTextoCentral.setText("");
+		this.pack();
+		
+		actualizaParametros();
+		
+		
+		
+		
+		slider1.addChangeListener(new SliderListener(this));
+		slider2.addChangeListener(new SliderListener(this));
+		slider3.addChangeListener(new SliderListener(this));
+		slider4.addChangeListener(new SliderListener(this));
+		slider5.addChangeListener(new SliderListener(this));
+		slider6.addChangeListener(new SliderListener(this));
+	}
+	
+	
+	public void actualizaParametros() {
+		
+		int x1 = slider1.getValue();
+		int x2 = slider1.getValue();
+		int x3 = slider1.getValue();
+		int x4 = slider1.getValue();
+		int x5 = slider1.getValue();
+		int x6 = slider1.getValue();
+		
+		
+		listaHechosIniciales.clear();
+		
+		listaHechosIniciales.add(Integer.toString(x1));
+		listaHechosIniciales.add(Integer.toString(x2));
+		listaHechosIniciales.add(Integer.toString(x3));
+		listaHechosIniciales.add(Integer.toString(x4));
+		listaHechosIniciales.add(Integer.toString(x5));
+		listaHechosIniciales.add(Integer.toString(x6));
+		
+		
+		
+	}
+	
+	
 	
 
 	private void bucleAnimacion(float delta) {

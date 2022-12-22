@@ -37,6 +37,7 @@ public class SEDifuso implements SistemaExperto {
 	List<Float> entradasBateria;	  // datos recogidos por los sensores
 	List<Float> valoresNitidificados;
 	float[][] datos;
+	String textoAMostrar;
 	
 
 	
@@ -139,7 +140,7 @@ public class SEDifuso implements SistemaExperto {
 				limitesConflictos.add(resultadoAntecedente);
 			}
 		}
-		System.out.println("Nº reglas que se activan: " + conflictos.size());
+		textoAMostrar += "\n" +  "Nº reglas que se activan: " + conflictos.size();
 
 		// Paso 2. Obtener la conclusión de cada regla y agregar
 		Operador agregacion = new OpO();
@@ -160,12 +161,9 @@ public class SEDifuso implements SistemaExperto {
 			sumaDenominador += v;
 		}
 		
-		//entradasVelocidad.add(j);
-		//entradasBateria.add(k);
-		//valoresNitidificados.add( sumaNumerador / sumaDenominador);
 		datos[j][k]=sumaNumerador / sumaDenominador;
 		
-		System.out.println("Valor nitidificado (porcentaje de potencia a aplicar al motor): " + datos[j][k]*100 +" %.");
+		textoAMostrar += "\n" + "Valor nitidificado (porcentaje de potencia a aplicar al motor): " + datos[j][k]*100 +" %.";
 		conflictos.clear();
 		limitesConflictos.clear();
 			}
@@ -177,12 +175,12 @@ public class SEDifuso implements SistemaExperto {
 	@Override
 	public String mostrarResultado() {
 		
-		//guardarDatos();
-		return "";
+		return textoAMostrar;
+
 
 	}
 	
-	public void guardarDatos() {
+	public void aguardarDatos() {
 		Writer writer;
 		String texto;
 

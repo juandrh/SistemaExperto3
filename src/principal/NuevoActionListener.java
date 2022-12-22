@@ -26,7 +26,7 @@ public class NuevoActionListener implements ActionListener  {
 	public void actionPerformed(ActionEvent e) {
 		
 		
-		gui.requestFocus();
+		gui.crearNuevo();
 		
 	}
 
