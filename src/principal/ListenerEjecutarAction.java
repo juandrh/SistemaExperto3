@@ -12,12 +12,12 @@ import java.awt.event.ActionListener;
  */
 
 
-public class NuevoActionListener implements ActionListener  {
+public class ListenerEjecutarAction implements ActionListener  {
 
 	private Gui gui;
 
 	
-	public NuevoActionListener(Gui gui) {
+	public ListenerEjecutarAction(Gui gui) {
 		this.gui = gui;
 		
 	}
@@ -26,8 +26,10 @@ public class NuevoActionListener implements ActionListener  {
 	public void actionPerformed(ActionEvent e) {
 		
 		
-		gui.crearNuevo();
-		
+		gui.ejecutaSistema(gui.getCreador());
+		if(gui.getCreador()!=null) {
+		gui.setTexto(gui.getCreador().mostrarResultado());
+		}
 	}
 
 	

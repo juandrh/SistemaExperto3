@@ -1,8 +1,5 @@
 package difuso;
 
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.Writer;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -43,9 +40,7 @@ public class SEDifuso implements SistemaExperto {
 	
 	@Override
 	public void crearVariables() {
-		V = new Variable("Diferencia con velocidad media", -0.50f, 0.50f);// negativa, cero, positiva
-		B = new Variable("Diferencia con nivel medio bateria",-1.0f, 1.0f);  // -0.50f, 0.50f);  // negativa, cero, positiva
-		P = new Variable("Potencia a aplicar", -1.0f, 1.0f); // reducir, mantener, aumentar
+		
 
 		operadores = new ArrayList<Operador>();  // lista de operadores que formarán los antecedentes de las reglas
 		reglas = new ArrayList<Regla>();
@@ -55,6 +50,7 @@ public class SEDifuso implements SistemaExperto {
 		entradasBateria = new ArrayList<Float>(); 	 
 		valoresNitidificados = new ArrayList<Float>(); 
 		datos= new float[21][21];
+		textoAMostrar ="-------------------------------------------------------------------------------------------------------------------------------------------------";
 
 	}
 
@@ -62,6 +58,30 @@ public class SEDifuso implements SistemaExperto {
 	public void datosEntrada(List<String> lista) {
 		// Se ha integrado en el motor de inferencia para proporcionar
 		//  un rango de valores combinando las dos variables de entrada
+		
+		float x1 =  (float) (Float.parseFloat(lista.get(0).toString())/100.0);
+		float x2 =  (float) (Float.parseFloat(lista.get(1).toString())/100.0);
+		float x3 =  (float) (Float.parseFloat(lista.get(2).toString())/100.0);
+		float x4 =  (float) (Float.parseFloat(lista.get(3).toString())/100.0);
+		float x5 =  (float) (Float.parseFloat(lista.get(4).toString())/100.0);
+		float x6 =  (float) (Float.parseFloat(lista.get(5).toString())/100.0);
+		
+		
+		
+		
+		
+		
+		
+		V = new Variable("Diferencia con velocidad media", x1, x2);// negativa, cero, positiva
+		B = new Variable("Diferencia con nivel medio bateria",x3, x4);  // -0.50f, 0.50f);  // negativa, cero, positiva
+		P = new Variable("Potencia a aplicar", x5, x6); // reducir, mantener, aumentar
+		
+		textoAMostrar += "\nParam_a1: "+x1+", Param_b1: " +x2;
+		textoAMostrar += "\nParam_a2: "+x3+", Param_b2: " +x4;
+		textoAMostrar += "\nParam_a3: "+x5+", Param_b3: " +x6+ "\n";
+		
+		
+		
 		
 	}
 
@@ -124,7 +144,7 @@ public class SEDifuso implements SistemaExperto {
 	@Override
 	public void ejecutarMotor() {
 		
-		float delta = 0.1f;
+		//float delta = 0.1f;
 		
 		
 		for (int j = 0; j < 21; j++) {
@@ -180,35 +200,6 @@ public class SEDifuso implements SistemaExperto {
 
 	}
 	
-	public void aguardarDatos() {
-		Writer writer;
-		String texto;
-
-		try {
-			writer = new FileWriter("DatosSistemaDifuso.txt");
-			for (int j = 0; j < 21; j++) {
-				for (int k = 0; k < 21; k++) {	
-			
-			texto = datos[j][k]+ ";" ;
-			
-			texto = texto.replaceAll("\\.",",");
-			//System.out.println(texto);
-			writer.write(texto);			
-			
-			
-				}
-				
-				writer.write("\n");
-			}
-			writer.close();
-
-		} catch (IOException e) {
-			e.printStackTrace();
-			System.out.println("Error al guardar los datos.");
-
-		}
-		
-
-	}
+	
 
 }

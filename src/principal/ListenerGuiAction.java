@@ -11,11 +11,11 @@ import java.awt.event.WindowListener;
  * 
  */
 
-public class GuiActionListener implements WindowListener {
+public class ListenerGuiAction implements WindowListener {
 
 	private Gui gui;
 	
-	public GuiActionListener(Gui gui) {
+	public ListenerGuiAction(Gui gui) {
 		this.gui = gui;
 	}
 

@@ -12,11 +12,11 @@ import javax.swing.event.ChangeListener;
  * 
  */
 
-public class SliderListener implements ChangeListener {
+public class ListenerSlider implements ChangeListener {
 
 	private Gui gui;
 
-	public SliderListener(Gui gui) {
+	public ListenerSlider(Gui gui) {
 		this.gui = gui;
 
 	}

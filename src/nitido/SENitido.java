@@ -87,10 +87,6 @@ public class SENitido implements SistemaExperto {
 			     // Default 
 		  }			
 		}
-		
-		
-		
-		
 		// fijar objetivos (acciones posibles a realizar)
 		resultados.add(ET);
 		resultados.add(CB);
