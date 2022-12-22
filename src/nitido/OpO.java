@@ -10,6 +10,9 @@ import java.util.List;
  * Sistema Experto Nítido 
  * Operador O
  * 
+ * Clase compuesto concreto del patron composite
+ * Clase operador concreto del patron interpreter
+ * 
  * @author Juan Del Rio
  * @version 1.0 Dic-2022
  */
@@ -20,7 +23,7 @@ public class OpO extends Operador {
 		super(descripcion);
 
 	}
-
+	// implementación de la evaluación del patrón interpreter
 	public boolean evaluar(List<Expresion> hechos) {
 
 		for (int i = 0; i < expresiones.size(); i++) {

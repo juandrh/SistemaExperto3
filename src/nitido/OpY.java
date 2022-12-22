@@ -10,19 +10,19 @@ import java.util.List;
  * Sistema Experto Nítido 
  * Operador Y
  * 
+ * Clase compuesto concreto del patron composite
+ * Clase operador concreto del patron interpreter
+ * 
  * @author Juan Del Rio
  * @version 1.0 Dic-2022
  */
 public class OpY extends Operador {
-
-
-	
 	
 	public OpY(String descripcion) {
 		super(descripcion); 
 		
 	}
-	
+	// implementación de la evaluación del patrón interpreter
 	public boolean evaluar(List<Expresion> hechos)
 	{
 		for (int i = 0; i < expresiones.size(); i++) {
@@ -39,6 +39,5 @@ public class OpY extends Operador {
 		texto += ")";
 		return texto; 
 	}
-
 
 }

@@ -7,7 +7,8 @@ import java.util.List;
  * conocimiento de ejemplo. 
  * Implementa los patrones: Interpreter, Composite y factory.
  * 
- * Sistema Experto Nítido Clase para reglas
+ * Sistema Experto Nítido 
+ * Clase para reglas
  * 
  * 
  * @author Juan Del Rio

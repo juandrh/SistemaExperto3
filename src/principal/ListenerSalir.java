@@ -4,27 +4,30 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 /**
- * Clase SalirListener
- * 
- * @author juan.delrio
- * @version 1.L
- * 
- */
+* Aplicación creadora de sistemas expertos nítidos o difusos con base de
+* conocimiento de ejemplo. 
+* Implementa los patrones: Interpreter, Composite y factory.
+* 
+* Manejo eventos salir
+* 
+* @author juan.delrio
+* @version 2.0 dic-2022
+* 
+*/
 
 public class ListenerSalir implements ActionListener {
 
-	private Gui gui;
+	private Principal principal;
 	
-	public ListenerSalir(Gui gui) {
-		this.gui = gui;
-
+	public ListenerSalir(Principal principal) {
+		this.principal = principal;
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		
-		gui.setVisible(false);
-		gui.dispose();
+		// cierra ventana principal
+		principal.setVisible(false);
+		principal.dispose();
 
 	}
 

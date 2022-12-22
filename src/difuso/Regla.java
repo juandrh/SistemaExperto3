@@ -16,23 +16,19 @@ public class Regla {
 
 	Operador op;	
 	FSemantica fConsecuente;
-	Variable vConsecuente;
-		
+	Variable vConsecuente;		
 
 	public Regla(Operador op,FSemantica fConsecuente, Variable vConsecuente) {
 		this.op = op;
 		this.fConsecuente = fConsecuente;
-		this.vConsecuente = vConsecuente;
-		
+		this.vConsecuente = vConsecuente;		
 	}
 
-	public float evaluaAntecedente(float x,float y) {
-			
+	public float evaluaAntecedente(float x,float y) {			
 		return op.evaluar(x,y);
 	}
 	
-	public FSemantica getFConsecuente() {
-		
+	public FSemantica getFConsecuente() {		
 		return fConsecuente;
 	}
 		

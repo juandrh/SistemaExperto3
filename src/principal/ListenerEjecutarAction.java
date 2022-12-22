@@ -4,35 +4,35 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 /**
- * Clase NuevoActionListener
+ * Aplicación creadora de sistemas expertos nítidos o difusos con base de
+ * conocimiento de ejemplo. 
+ * Implementa los patrones: Interpreter, Composite y factory.
+ * 
+ * Manejo evento Ejecutar
  * 
  * @author juan.delrio
- * @version 1.L
+ * @version 2.0 dic-2022
  * 
  */
 
 
 public class ListenerEjecutarAction implements ActionListener  {
 
-	private Gui gui;
-
+	private Principal principal;
 	
-	public ListenerEjecutarAction(Gui gui) {
-		this.gui = gui;
-		
+	public ListenerEjecutarAction(Principal principal) {
+		this.principal = principal;		
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		
-		
-		gui.ejecutaSistema(gui.getCreador());
-		if(gui.getCreador()!=null) {
-		gui.setTexto(gui.getCreador().mostrarResultado());
+		// Intenta ejecutar el sistema 		
+		principal.ejecutaSistema(principal.getCreador());
+		// Muestra los resultados si hay un sistema creado
+		if(principal.getCreador()!=null) {
+			principal.setTexto(principal.getCreador().mostrarResultado());
 		}
 	}
 
-	
-		
 
 }

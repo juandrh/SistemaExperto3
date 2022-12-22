@@ -9,7 +9,7 @@ import java.util.List;
  * Implementa los patrones: Interpreter, Composite y factory
  * 
  * Sistema Experto Difuso
- * Operador de agregación
+ * Operador de agregación, implementa los métodos de la clase padre
  * 
  * 
  * @author Juan Del Rio
@@ -22,8 +22,7 @@ public class OpO extends Operador{
 	float limite;
 
 	public OpO() {
-		funciones = new ArrayList<FSemantica>();
-		
+		funciones = new ArrayList<FSemantica>();		
 	}
 
 	public void anadir(FSemantica f, Variable variable) {
@@ -40,8 +39,7 @@ public class OpO extends Operador{
 
 		float max = 0.0f;
 
-		for (int i = 0; i < funciones.size(); i++) {
-			
+		for (int i = 0; i < funciones.size(); i++) {			
 			//mínimo entre el valor del consecuente y el valor del antecedente
 			float valor = Math.min(funciones.get(i).call(variable.a, variable.b, x),limite);			
 			if (valor > max) {

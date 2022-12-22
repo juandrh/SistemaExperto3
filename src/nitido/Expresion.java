@@ -9,6 +9,7 @@ import java.util.List;
  * 
  * Sistema Experto Nítido 
  * Clase componente del patron composite
+ * Clase expresión del patron interpreter
  * 
  * @author Juan Del Rio
  * @version 1.0 Dic-2022
@@ -26,8 +27,8 @@ public abstract class Expresion {
 		return descripcion;		
 	}
 	
-	public abstract boolean evaluar(List<Expresion> hechos);	
-		
+	// Métodos abstactos a implementar por las clases hijo
+	public abstract boolean evaluar(List<Expresion> hechos);		
 	public abstract String toString() ;
 		
 	

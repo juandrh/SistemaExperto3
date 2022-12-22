@@ -8,7 +8,7 @@ import nitido.SENitido;
  * Implementa los patrones: Interpreter, Composite y factory
  * 
  * Creador concreto de sistema nítido
- * 
+ * Clase creador concreto del patrón factoría
  * 
  * @author Juan Del Rio
  * @version 1.0 Dic-2022

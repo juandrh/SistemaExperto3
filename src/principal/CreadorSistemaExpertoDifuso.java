@@ -7,6 +7,7 @@ import difuso.SEDifuso;
  * Implementa los patrones: Interpreter, Composite y factory
  * 
  * Creador concreto de sistema difuso
+ * Clase creador concreto del patrón factoría
  * 
  * 
  * @author Juan Del Rio

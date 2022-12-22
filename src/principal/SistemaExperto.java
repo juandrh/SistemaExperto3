@@ -8,10 +8,10 @@ import java.util.List;
  * Implementa los patrones: Interpreter, Composite y factory
  * 
  * Interfaz para los sistemas expertos concretos
- * 
+ * Clase producto del patrón factoría
  * 
  * @author Juan Del Rio
- * @version 1.0 Dic-2022
+ * @version 2.0 Dic-2022
  */
 
 public interface SistemaExperto {

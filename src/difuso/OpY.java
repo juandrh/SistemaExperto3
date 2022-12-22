@@ -8,7 +8,7 @@ import java.util.List;
  * Implementa los patrones: Interpreter, Composite y factory
  * 
  * Sistema Experto Difuso
- * Operador de interseccion
+ * Operador de interseccion, implementa los métodos de la clase padre
  * 
  * 
  * @author Juan Del Rio
@@ -36,19 +36,14 @@ public class OpY extends Operador {
 	public float evaluar(float x, float y) {
 		
 		float r1=funciones.get(0).call(variables.get(0).a, variables.get(0).b, x);
-		float r2=funciones.get(1).call(variables.get(1).a, variables.get(1).b, y);		 
-		//System.out.println("Operador Y: operando 1-> " +r1);
-		//System.out.println("Operador Y: operando 2-> " +r2);
-		
-		float resultado = Math.min(r1,r2);
-		//System.out.println("Valor operador Y-> " +resultado);
-		
+		float r2=funciones.get(1).call(variables.get(1).a, variables.get(1).b, y);			
+		float resultado = Math.min(r1,r2);		
 		return resultado;
 	}
 
 	@Override
 	public void setLimite(float limite) {
-		// TODO Auto-generated method stub
+		// Sin funcionalidad. No se necesita en esta clase
 		
 	}
 

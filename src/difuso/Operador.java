@@ -15,7 +15,7 @@ package difuso;
 
 public abstract class Operador {
 
-	
+	// Declara los métodos que deberán implementar los operadores concretos
 	public abstract void anadir(FSemantica f, Variable v);
 	public abstract float evaluar(float x, float y);
 	public abstract void setLimite(float limite);

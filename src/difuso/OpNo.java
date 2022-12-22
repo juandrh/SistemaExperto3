@@ -6,7 +6,7 @@ package difuso;
  * Implementa los patrones: Interpreter, Composite y factory
  * 
  * Sistema Experto Difuso
- * Operador de complementación
+ * Operador de complementación, implementa los métodos de la clase padre
  * 
  * 
  * @author Juan Del Rio
@@ -20,21 +20,17 @@ public class OpNo extends Operador  {
 	
 	public void anadir(FSemantica f, Variable v) {
 		funcion = f;
-		variable = v;
-		
+		variable = v;		
 	}
 
-	public float evaluar(float x,float y) {
-		
+	public float evaluar(float x,float y) {		
 		return 1.0f-funcion.call(variable.a, variable.b, x);
 	}
 
 	@Override
 	public void setLimite(float limite) {
-		// TODO Auto-generated method stub
-		
+		// Sin funcionalidad. No se necesita en esta clase		
 	}
-	
 	
 
 }

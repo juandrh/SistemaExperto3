@@ -9,7 +9,8 @@ import java.util.List;
  * Implementa los patrones: Interpreter, Composite y factory.
  * 
  * Sistema Experto Nítido 
- * Clase compuesto del patron composite
+ * Clase compuesto abstracto del patron composite
+ * Clase operador abstracto del patron interpreter
  * 
  * @author Juan Del Rio
  * @version 1.0 Dic-2022
@@ -25,6 +26,7 @@ public abstract class Operador extends Expresion {
 		expresiones = new ArrayList<Expresion>();
 	}
 
+	// implementación de la gestion de compuestos del patrón composite
 	public void anadir(Expresion e) {
 		expresiones.add(e);
 	}

@@ -10,11 +10,11 @@ import principal.SistemaExperto;
  *  Implementa los patrones: Interpreter, Composite y factory.
  * 
  * Sistema Experto Nítido
- *  Clase principal
+ * Clase producto concreto del patrón factoría
  * 
  * 
  * @author Juan Del Rio
- * @version 1.0 Dic-2022
+ * @version 2.0 Dic-2022
  */
 
 public class SENitido implements SistemaExperto {
@@ -58,9 +58,7 @@ public class SENitido implements SistemaExperto {
 
 	@Override
 	public void datosEntrada(List<String> lista) {
-		// Añadir hechos a la base de conocmimientos
-		
-		
+		// Añadir hechos a la base de conocmimientos		
 		
 		for(int i=0;i<lista.size();i++) {
 			switch (lista.get(i)) { 
@@ -194,7 +192,7 @@ public class SENitido implements SistemaExperto {
 			for (int i = 0; i < conflictos.size(); i++) {
 				textoAMostrar += "\n" + conflictos.get(i).toString();
 			}
-			System.out.println("\nHechos:");
+			textoAMostrar += "\n" +"\nHechos:";
 			for (int i = 0; i < hechos.size(); i++) {
 				textoAMostrar += "\n" + hechos.get(i).toString() + "(" + hechos.get(i).evaluar(hechos) + ")";
 			}
@@ -221,24 +219,16 @@ public class SENitido implements SistemaExperto {
 			conflictos.clear();
 			ronda++;
 		}
-
 	}
 
 	@Override
 	public String mostrarResultado() {
 		if (resultado == null) {
 			textoAMostrar += "\n\n" + "No se ha obtenido resultado.\nRevisar las datos de entrada y las reglas.";
-
 		} else {
 			textoAMostrar += "\n\n" + "Resultado: " + resultado.getDescripcion();
-		}
-		
-		
+		}		
 		return textoAMostrar;
-
 	}
-	
-	
-		
 
 }

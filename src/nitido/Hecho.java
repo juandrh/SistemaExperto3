@@ -8,7 +8,8 @@ import java.util.List;
  * Implementa los patrones: Interpreter, Composite y factory.
  * 
  * Sistema Experto Nítido 
- * Clase elemento del patron composite
+ * Clase elemento(hoja) del patron composite
+ * Clase elemento terminal del patron interpreter
  * 
  * @author Juan Del Rio
  * @version 1.0 Dic-2022
@@ -16,12 +17,11 @@ import java.util.List;
 
 
 public class Hecho extends Expresion {
-
 	
 	  public Hecho(String descripcion ) {
 		  super(descripcion); 
 		  }
-	 
+	// Implementación del método abstracto del padre
 	public boolean evaluar(List<Expresion> hechos)
 	{
 		// ¿Está la descripción en la lista de hechos?
@@ -30,12 +30,9 @@ public class Hecho extends Expresion {
 		}		
 		return false;
 	}
-	
-	
-	
+		
 	public String toString() {		
 		return descripcion;
 	}
-
 	
 }
